@@ -14,9 +14,12 @@
     "iconUrl": "https://cycle-tracker-based.vercel.app/vite.svg",
     "splashImageUrl": "https://cycle-tracker-based.vercel.app/vite.svg",
     "splashBackgroundColor": "#ffffff",
+    "webhookUrl": "https://cycle-tracker-based.vercel.app/api/webhook",
     "subtitle": "Period & fertility tracker",
     "description": "Simple menstrual cycle, ovulation and fertility tracker for Base users.",
-    "screenshotUrls": [],
+    "screenshotUrls": [
+      "https://cycle-tracker-based.vercel.app/vite.svg"
+    ],
     "primaryCategory": "health-fitness",
     "tags": ["health", "cycle", "tracker"],
     "heroImageUrl": "https://cycle-tracker-based.vercel.app/vite.svg",

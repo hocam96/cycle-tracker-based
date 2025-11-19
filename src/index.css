@@ -1,0 +1,315 @@
+/* src/index.css */
+
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  color: #1f2933;
+  background: radial-gradient(circle at top, #fdf2ff 0, #f5fbff 40%, #f9fafb 100%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.app-card {
+  max-width: 960px;
+  width: 100%;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  padding: 24px 20px 28px;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+@media (min-width: 768px) {
+  .app-card {
+    padding: 32px 32px 36px;
+  }
+}
+
+.app-header h1 {
+  margin: 0 0 6px;
+  font-size: 24px;
+}
+
+.app-header .subtitle {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.section {
+  margin-top: 24px;
+}
+
+.section h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.field label {
+  font-weight: 500;
+}
+
+.field input[type="date"],
+.field input[type="number"] {
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 8px 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field input:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.2);
+}
+
+.field small {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #4b5563;
+}
+
+.toggle input {
+  width: 16px;
+  height: 16px;
+}
+
+.hint {
+  margin: 8px 0 0;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.summary-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+@media (min-width: 640px) {
+  .summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.summary-card {
+  border-radius: 18px;
+  padding: 14px 14px 16px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.summary-card.period {
+  background: linear-gradient(135deg, #fee2f2, #eff6ff);
+  border-color: #fb7185;
+}
+
+.summary-card.ovulation {
+  background: linear-gradient(135deg, #ede9fe, #f5f3ff);
+  border-color: #a855f7;
+}
+
+.summary-card.pregnancy {
+  background: linear-gradient(135deg, #dcfce7, #e0f2fe);
+  border-color: #22c55e;
+}
+.summary-card.today {
+  background: linear-gradient(135deg, #e0f2fe, #f5e0ff);
+  border-color: #3b82f6;
+}
+
+.summary-card h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+
+.summary-card .main {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.summary-card .sub {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.disclaimer {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #6b7280;
+}
+/* Calendar view */
+
+.calendar {
+  margin-top: 8px;
+  border-radius: 18px;
+  padding: 12px 12px 10px;
+  background: rgba(248, 250, 252, 0.9);
+  border: 1px solid #e5e7eb;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 8px;
+}
+.calendar-month-label {
+  flex: 1;
+  text-align: center;
+}
+
+.calendar-nav-button {
+  border: none;
+  background: transparent;
+  padding: 2px 8px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  color: #6b7280;
+}
+
+.calendar-nav-button:hover {
+  background: rgba(148, 163, 184, 0.2);
+}
+
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  font-size: 11px;
+  color: #9ca3af;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.weekday {
+  padding: 2px 0;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  font-size: 12px;
+}
+
+.day-cell {
+  height: 30px;
+  margin: 2px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111827;
+}
+
+.day-cell.empty {
+  background: transparent;
+}
+
+.day-cell.period {
+  background: #fecdd3;
+}
+
+.day-cell.fertile {
+  background: #bbf7d0;
+}
+
+.day-cell.ovulation {
+  box-shadow: 0 0 0 2px #a855f7 inset;
+}
+
+.day-cell.today {
+  box-shadow: 0 0 0 1px #0ea5e9 inset;
+  font-weight: 600;
+}
+
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+.legend-dot.period {
+  background: #fb7185;
+}
+
+.legend-dot.fertile {
+  background: #22c55e;
+}
+
+.legend-dot.ovulation {
+  border: 2px solid #a855f7;
+}
+
+.legend-dot.today {
+  border: 2px solid #0ea5e9;
+}

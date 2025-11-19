@@ -1,0 +1,10 @@
+{
+  "accountAssociation": {},
+  "miniapp": {
+    "name": "Cycle Tracker",
+    "url": "https://cycle-tracker-based.vercel.app"
+  },
+  "baseBuilder": {
+    "ownerAddress": "0x447608Db7712Fe0B5B88151Ec9EC54D358831BB6"
+  }
+}

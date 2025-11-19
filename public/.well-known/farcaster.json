@@ -1,10 +1,29 @@
 {
-  "accountAssociation": {},
-  "miniapp": {
-    "name": "Cycle Tracker",
-    "url": "https://cycle-tracker-based.vercel.app"
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
   },
   "baseBuilder": {
     "ownerAddress": "0x447608Db7712Fe0B5B88151Ec9EC54D358831BB6"
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "Cycle Tracker",
+    "homeUrl": "https://cycle-tracker-based.vercel.app",
+    "iconUrl": "https://cycle-tracker-based.vercel.app/vite.svg",
+    "splashImageUrl": "https://cycle-tracker-based.vercel.app/vite.svg",
+    "splashBackgroundColor": "#ffffff",
+    "subtitle": "Period & fertility tracker",
+    "description": "Simple menstrual cycle, ovulation and fertility tracker for Base users.",
+    "screenshotUrls": [],
+    "primaryCategory": "health-fitness",
+    "tags": ["health", "cycle", "tracker"],
+    "heroImageUrl": "https://cycle-tracker-based.vercel.app/vite.svg",
+    "tagline": "Track your cycle on Base",
+    "ogTitle": "Cycle Tracker",
+    "ogDescription": "Simple cycle & fertility tracker mini app.",
+    "ogImageUrl": "https://cycle-tracker-based.vercel.app/vite.svg",
+    "noindex": true
   }
 }

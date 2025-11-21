@@ -1,3 +1,11 @@
+import { MiniAppSDK } from "@base-org/minikit";
+
+MiniAppSDK.init();
+
+MiniAppSDK.onReady(() => {
+  console.log("Mini App is ready!");
+});
+
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'

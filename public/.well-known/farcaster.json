@@ -12,14 +12,7 @@
     "name": "Cycle Tracker",
     "homeUrl": "https://cycle-tracker-based.vercel.app",
     "iconUrl": "https://cycle-tracker-based.vercel.app/icon.png",
-    "splashImageUrl": "https://cycle-tracker-based.vercel.app/icon.png",
-    "splashBackgroundColor": "#ffffff",
-    "subtitle": "Period tracker",
     "description": "Track your cycle on Base.",
-    "screenshotUrls": [],
-    "primaryCategory": "health-fitness",
-    "tags": ["cycle", "fertility"],
-    "tagline": "Simple cycle tracker",
-    "noindex": true
+    "tagline": "Simple cycle tracker"
   }
 }

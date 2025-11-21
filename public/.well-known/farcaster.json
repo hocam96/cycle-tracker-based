@@ -10,11 +10,16 @@
     ]
   },
   "miniapp": {
-    "version": "1",
-    "name": "Cycle Tracker",
-    "homeUrl": "https://cycle-tracker-based.vercel.app",
-    "iconUrl": "https://cycle-tracker-based.vercel.app/icon.png",
-    "description": "Track your cycle on Base.",
-    "tagline": "Simple cycle tracker"
-  }
+  "version": "1",
+  "name": "Cycle Tracker",
+  "homeUrl": "https://cycle-tracker-based.vercel.app",
+  "iconUrl": "https://cycle-tracker-based.vercel.app/icon.png",
+  "splashImageUrl": "https://cycle-tracker-based.vercel.app/icon.png",
+  "splashBackgroundColor": "#ffffff",
+  "primaryCategory": "health-fitness",
+  "tags": ["cycle", "fertility"],
+  "description": "Track your cycle on Base.",
+  "tagline": "Simple cycle tracker"
+}
+
 }

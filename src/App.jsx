@@ -239,7 +239,7 @@ export default function App() {
     <div className="app-brand">
       <div className="app-logo-wrap">
         <img
-          src="/icon.png"
+          src="/logo.png"
           alt="Cycle Tracker logo"
           className="app-logo"
         />

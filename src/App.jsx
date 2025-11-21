@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { sdk } from "@farcaster/miniapp-sdk";
+
 
 function addDays(date, days) {
   const d = new Date(date);

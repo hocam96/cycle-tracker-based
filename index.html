@@ -19,6 +19,16 @@
       }
     }
   }'
+  <script>
+  // Base Mini App preview fix
+  window.addEventListener("message", (event) => {
+    if (event.data?.type === "IS_MINI_APP") {
+      window.isMiniApp = true;
+      window.parent.postMessage({ type: "MINI_APP_READY" }, "*");
+    }
+  });
+</script>
+
 />
 
   </head>

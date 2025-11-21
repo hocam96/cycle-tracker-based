@@ -238,11 +238,7 @@ export default function App() {
   <div className="app-header-main">
     <div className="app-brand">
       <div className="app-logo-wrap">
-        <img
-          src="/logo.png"
-          alt="Cycle Tracker logo"
-          className="app-logo"
-        />
+        
       </div>
       <div>
         <h1>Cycle &amp; Pregnancy Tracker</h1>

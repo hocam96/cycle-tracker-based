@@ -1,7 +1,7 @@
+// src/App.jsx
 import { useState, useEffect, useMemo } from "react";
 
-/* -------- helper functions (aynen sende olduğu gibi) -------- */
-
+// ----------------- helper fonksiyonlar -----------------
 function addDays(date, days) {
   const d = new Date(date);
   d.setDate(d.getDate() + days);
@@ -43,18 +43,20 @@ function calculateCycle(lastPeriodStr, cycleLength, periodLength) {
   const fertileStart = addDays(ovulationDay, -3);
   const fertileEnd = addDays(ovulationDay, 1);
 
+  // Pregnancy estimate (40 weeks)
   const dueDate = addDays(lastPeriod, 280);
   const diffMsFromStart = today - lastPeriod;
   const diffDaysFromStart = Math.floor(diffMsFromStart / (1000 * 60 * 60 * 24));
   const pregWeeks = Math.floor(diffDaysFromStart / 7);
   const pregExtraDays = diffDaysFromStart % 7;
 
+  // Today-in-cycle info
   let cycleDayToday = null;
   let phaseLabel = null;
   let phaseDescription = null;
 
   if (diffDaysFromStart >= 0) {
-    cycleDayToday = (diffDaysFromStart % cycleLength) + 1;
+    cycleDayToday = (diffDaysFromStart % cycleLength) + 1; // day 1 = period start
 
     if (cycleDayToday <= periodLength) {
       phaseLabel = "Menstrual phase";
@@ -93,6 +95,7 @@ function calculateCycle(lastPeriodStr, cycleLength, periodLength) {
   };
 }
 
+// Belirli bir ay için takvim (period / fertile / ovulation highlight)
 function buildCalendar(results, baseDate) {
   if (!results || !results.lastPeriod) return null;
 
@@ -102,7 +105,7 @@ function buildCalendar(results, baseDate) {
   const month = baseDate.getMonth();
 
   const firstDayOfMonth = new Date(year, month, 1);
-  const firstWeekday = firstDayOfMonth.getDay();
+  const firstWeekday = firstDayOfMonth.getDay(); // 0 = Sunday
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const msPerDay = 1000 * 60 * 60 * 24;
 
@@ -115,16 +118,28 @@ function buildCalendar(results, baseDate) {
     const diffDays = Math.floor(diffMs / msPerDay);
 
     if (diffDays >= 0) {
-      const dayInCycle = diffDays % cycleLength;
-      const ovulationIndex = cycleLength - 14;
+      const dayInCycle = diffDays % cycleLength; // 0-based
+      const ovulationIndex = cycleLength - 14; // 0-based
 
-      if (dayInCycle < periodLength) labels.push("period");
-      if (dayInCycle >= ovulationIndex - 3 && dayInCycle <= ovulationIndex + 1)
+      if (dayInCycle < periodLength) {
+        labels.push("period");
+      }
+
+      if (
+        dayInCycle >= ovulationIndex - 3 &&
+        dayInCycle <= ovulationIndex + 1
+      ) {
         labels.push("fertile");
-      if (dayInCycle === ovulationIndex) labels.push("ovulation");
+      }
+
+      if (dayInCycle === ovulationIndex) {
+        labels.push("ovulation");
+      }
     }
 
-    if (isSameDay(date, today)) labels.push("today");
+    if (isSameDay(date, today)) {
+      labels.push("today");
+    }
 
     days.push({ date, labels });
   }
@@ -137,8 +152,7 @@ function buildCalendar(results, baseDate) {
   };
 }
 
-/* ---------------------- React component ---------------------- */
-
+// ----------------- ana component -----------------
 export default function App() {
   const [lastPeriod, setLastPeriod] = useState("");
   const [cycleLength, setCycleLength] = useState(28);
@@ -146,7 +160,7 @@ export default function App() {
   const [pregnancyMode, setPregnancyMode] = useState(false);
   const [calendarMonthOffset, setCalendarMonthOffset] = useState(0);
 
-  // localStorage load
+  // localStorage’dan yükle
   useEffect(() => {
     const saved = localStorage.getItem("cycle-tracker");
     if (saved) {
@@ -160,7 +174,7 @@ export default function App() {
     }
   }, []);
 
-  // localStorage save
+  // localStorage’a kaydet
   useEffect(() => {
     const data = {
       lastPeriod,
@@ -172,7 +186,8 @@ export default function App() {
   }, [lastPeriod, cycleLength, periodLength, pregnancyMode]);
 
   const results = useMemo(
-    () => calculateCycle(lastPeriod, Number(cycleLength), Number(periodLength)),
+    () =>
+      calculateCycle(lastPeriod, Number(cycleLength), Number(periodLength)),
     [lastPeriod, cycleLength, periodLength]
   );
 
@@ -207,17 +222,12 @@ export default function App() {
         <header className="app-header">
           <div className="app-header-main">
             <div className="app-brand">
-              <img
-                src="/logo.png"
-                alt="Cycle Tracker logo"
-                className="app-logo"
-              />
+              <div className="app-logo-wrap" />
               <div>
                 <h1>Cycle &amp; Pregnancy Tracker</h1>
                 <p className="tagline">Track your cycle on Base</p>
               </div>
             </div>
-
             <span className="pill">Mini app</span>
           </div>
 
@@ -276,7 +286,7 @@ export default function App() {
           </label>
         </section>
 
-        {/* TODAY */}
+        {/* TODAY IN CYCLE */}
         <section className="section">
           <h2>Today in your cycle</h2>
           {!hasData ? (
@@ -378,7 +388,7 @@ export default function App() {
           )}
         </section>
 
-        {/* PREDICTION */}
+        {/* CYCLE PREDICTION */}
         <section className="section">
           <h2>Cycle prediction</h2>
           {!hasData ? (

@@ -5,24 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cycle Tracker</title>
 
-    <!-- favicon -->
+    <!-- Browser favicon -->
     <link rel="icon" type="image/png" href="/logo.png" />
 
-    <!-- BASE MINI APP EMBED CONFIG (DOĞRU FORMAT) -->
-    <meta name="miniapp-config"
+    <!-- Farcaster / Base embed için mini app meta -->
+    <meta
+      name="fc:miniapp"
       content='{
+        "version": "1",
         "name": "Cycle Tracker",
-        "description": "Simple cycle & ovulation tracker",
         "iconUrl": "https://cycle-tracker-based.vercel.app/logo.png",
-        "splashImageUrl": "https://cycle-tracker-based.vercel.app/logo.png"
+        "homeUrl": "https://cycle-tracker-based.vercel.app",
+        "imageUrl": "https://cycle-tracker-based.vercel.app/logo.png",
+        "button": {
+          "title": "Open Cycle Tracker",
+          "action": {
+            "type": "launch_miniapp",
+            "name": "Cycle Tracker",
+            "url": "https://cycle-tracker-based.vercel.app"
+          }
+        }
       }'
     />
 
-    <!-- BASE PREVIEW FIX (KALMASI GEREKEN TEK SCRIPT) -->
+    <!-- Base Mini App preview fix: IS_MINI_APP -> MINI_APP_READY -->
     <script>
       window.addEventListener("message", (event) => {
-        if (event.data?.type === "IS_MINI_APP") {
-          window.parent.postMessage({ type: "MINI_APP_READY" }, "*");
+        if (event.data && event.data.type === "IS_MINI_APP") {
+          window.isMiniApp = true;
+          window.parent?.postMessage({ type: "MINI_APP_READY" }, "*");
+          console.log("[miniapp] MINI_APP_READY sent");
         }
       });
     </script>

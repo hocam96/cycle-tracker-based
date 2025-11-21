@@ -1,7 +1,5 @@
+// src/App.jsx
 import { useState, useEffect, useMemo } from "react";
-import { sdk } from "@farcaster/miniapp-sdk";
-
-/* ----------------- Helper functions ----------------- */
 
 function addDays(date, days) {
   const d = new Date(date);
@@ -57,7 +55,6 @@ function calculateCycle(lastPeriodStr, cycleLength, periodLength) {
   let phaseDescription = null;
 
   if (diffDaysFromStart >= 0) {
-    // day 1 = first day of period
     cycleDayToday = (diffDaysFromStart % cycleLength) + 1;
 
     if (cycleDayToday <= periodLength) {
@@ -97,17 +94,16 @@ function calculateCycle(lastPeriodStr, cycleLength, periodLength) {
   };
 }
 
-// Build a calendar for ANY month, using repeating cycles from lastPeriod forward
 function buildCalendar(results, baseDate) {
   if (!results || !results.lastPeriod) return null;
 
   const { lastPeriod, cycleLength, periodLength } = results;
   const today = new Date();
   const year = baseDate.getFullYear();
-  const month = baseDate.getMonth(); // 0–11
+  const month = baseDate.getMonth();
 
   const firstDayOfMonth = new Date(year, month, 1);
-  const firstWeekday = firstDayOfMonth.getDay(); // 0 = Sunday
+  const firstWeekday = firstDayOfMonth.getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const msPerDay = 1000 * 60 * 60 * 24;
 
@@ -116,37 +112,20 @@ function buildCalendar(results, baseDate) {
     const date = new Date(year, month, day);
     const labels = [];
 
-    // Distance from first recorded period
     const diffMs = stripTime(date) - stripTime(lastPeriod);
     const diffDays = Math.floor(diffMs / msPerDay);
 
     if (diffDays >= 0) {
-      const dayInCycle = diffDays % cycleLength; // 0-based
-      const ovulationIndex = cycleLength - 14; // 0-based
+      const dayInCycle = diffDays % cycleLength;
+      const ovulationIndex = cycleLength - 14;
 
-      // Period days
-      if (dayInCycle < periodLength) {
-        labels.push("period");
-      }
-
-      // Fertile window
-      if (
-        dayInCycle >= ovulationIndex - 3 &&
-        dayInCycle <= ovulationIndex + 1
-      ) {
+      if (dayInCycle < periodLength) labels.push("period");
+      if (dayInCycle >= ovulationIndex - 3 && dayInCycle <= ovulationIndex + 1)
         labels.push("fertile");
-      }
-
-      // Exact ovulation day
-      if (dayInCycle === ovulationIndex) {
-        labels.push("ovulation");
-      }
+      if (dayInCycle === ovulationIndex) labels.push("ovulation");
     }
 
-    // Today highlight
-    if (isSameDay(date, today)) {
-      labels.push("today");
-    }
+    if (isSameDay(date, today)) labels.push("today");
 
     days.push({ date, labels });
   }
@@ -159,32 +138,14 @@ function buildCalendar(results, baseDate) {
   };
 }
 
-/* ----------------- React component ----------------- */
-
 export default function App() {
   const [lastPeriod, setLastPeriod] = useState("");
   const [cycleLength, setCycleLength] = useState(28);
   const [periodLength, setPeriodLength] = useState(5);
   const [pregnancyMode, setPregnancyMode] = useState(false);
-  const [calendarMonthOffset, setCalendarMonthOffset] = useState(0); // 0 = current month
+  const [calendarMonthOffset, setCalendarMonthOffset] = useState(0);
 
-  // FARCASTER MINI APP READY CALL
-  useEffect(() => {
-    async function markReady() {
-      try {
-        if (sdk?.actions?.ready) {
-          await sdk.actions.ready();
-          console.log("Mini app is ready ✅");
-        }
-      } catch (err) {
-        console.error("Failed to call sdk.actions.ready()", err);
-      }
-    }
-
-    markReady();
-  }, []);
-
-  // Load from localStorage on first load
+  // Local storage load
   useEffect(() => {
     const saved = localStorage.getItem("cycle-tracker");
     if (saved) {
@@ -192,13 +153,12 @@ export default function App() {
       if (data.lastPeriod) setLastPeriod(data.lastPeriod);
       if (data.cycleLength) setCycleLength(data.cycleLength);
       if (data.periodLength) setPeriodLength(data.periodLength);
-      if (typeof data.pregnancyMode === "boolean") {
+      if (typeof data.pregnancyMode === "boolean")
         setPregnancyMode(data.pregnancyMode);
-      }
     }
   }, []);
 
-  // Save to localStorage when values change
+  // Local storage save
   useEffect(() => {
     const data = {
       lastPeriod,
@@ -258,7 +218,6 @@ export default function App() {
                 <p className="tagline">Track your cycle on Base</p>
               </div>
             </div>
-
             <span className="pill">Mini app</span>
           </div>
 
@@ -340,7 +299,7 @@ export default function App() {
           )}
         </section>
 
-        {/* CALENDAR VIEW WITH MONTH NAV */}
+        {/* CALENDAR */}
         <section className="section">
           <h2>Calendar</h2>
           {!calendar ? (
@@ -418,7 +377,7 @@ export default function App() {
           )}
         </section>
 
-        {/* CYCLE PREDICTION */}
+        {/* PREDICTION */}
         <section className="section">
           <h2>Cycle prediction</h2>
           {!hasData ? (

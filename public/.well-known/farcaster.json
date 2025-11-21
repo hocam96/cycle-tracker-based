@@ -4,17 +4,12 @@
     "payload": "",
     "signature": ""
   },
+  "accountAssociationMessage": "",
   "miniapp": {
-    "version": "1",
     "name": "Cycle Tracker",
-    "description": "Simple menstrual cycle, ovulation and fertility tracker for Base users.",
-    "iconUrl": "https://cycle-tracker-based.vercel.app/vite.svg",
-    "homeUrl": "https://cycle-tracker-based.vercel.app",
-    "canonicalDomain": "cycle-tracker-based.vercel.app",
-    "requiredChains": ["eip155:8453"],
-    "tags": ["health", "cycle", "tracker"],
-    "requiredCapabilities": [
-      "actions.ready"
-    ]
+    "description": "Simple cycle and fertility tracker for Base."
+  },
+  "baseBuilder": {
+    "ownerAddress": "0x447608Db7712Fe0B5B88151Ec9EC54D358831BB6"
   }
 }

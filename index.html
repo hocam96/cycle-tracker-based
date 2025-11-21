@@ -9,7 +9,7 @@
   name="fc:miniapp"
   content='{
     "version":"next",
-    "imageUrl":"https://cycle-tracker-based.vercel.app/icon.png",
+    "imageUrl":"https://cycle-tracker-based.vercel.app/logo.png",
     "button":{
       "title":"Open Cycle Tracker",
       "action":{
@@ -24,6 +24,19 @@
 />
 
   </head>
+
+    <script>
+    // Base Mini App "Ready" sinyali
+    window.addEventListener("message", (event) => {
+      if (event?.data?.type === "IS_MINI_APP") {
+        // İframe içindeyiz ve Base App bizi sorguluyor
+        window.isMiniApp = true;
+        window.parent.postMessage({ type: "MINI_APP_READY" }, "*");
+      }
+    });
+  </script>
+</body>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

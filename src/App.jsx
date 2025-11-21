@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo } from "react";
-import { useEffect } from "react";
 import { sdk } from "@farcaster/miniapp-sdk";
 
 function addDays(date, days) {
@@ -164,7 +163,19 @@ export default function App() {
   const [periodLength, setPeriodLength] = useState(5);
   const [pregnancyMode, setPregnancyMode] = useState(false);
   const [calendarMonthOffset, setCalendarMonthOffset] = useState(0); // 0 = current month
+  // 🔔 FARCASTER MINI APP READY CALL
+  useEffect(() => {
+    async function markReady() {
+      try {
+        await sdk.actions.ready();
+        console.log("Mini app is ready ✅");
+      } catch (err) {
+        console.error("Failed to call sdk.actions.ready()", err);
+      }
+    }
 
+    markReady();
+  }, []);
   // Load from localStorage on first load
   useEffect(() => {
     const saved = localStorage.getItem("cycle-tracker");

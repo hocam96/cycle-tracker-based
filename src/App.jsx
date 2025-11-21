@@ -235,12 +235,30 @@ export default function App() {
     <div className="app-root">
       <div className="app-card">
         <header className="app-header">
-          <h1>Cycle & Pregnancy Tracker</h1>
-          <p className="subtitle">
-            A simple, pastel dashboard for cycle phases, calendar, ovulation and
-            pregnancy estimates. Not medical advice.
-          </p>
-        </header>
+  <div className="app-header-main">
+    <div className="app-brand">
+      <div className="app-logo-wrap">
+        <img
+          src="/icon.png"
+          alt="Cycle Tracker logo"
+          className="app-logo"
+        />
+      </div>
+      <div>
+        <h1>Cycle &amp; Pregnancy Tracker</h1>
+        <p className="tagline">Track your cycle on Base</p>
+      </div>
+    </div>
+
+    <span className="pill">Mini app · Base</span>
+  </div>
+
+  <p className="subtitle">
+    A simple, pastel dashboard for cycle phases, calendar, ovulation and
+    pregnancy estimates. Not medical advice.
+  </p>
+</header>
+
 
         {/* BASICS */}
         <section className="section">

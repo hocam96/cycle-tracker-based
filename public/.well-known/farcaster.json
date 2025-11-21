@@ -15,7 +15,7 @@
     "homeUrl": "https://cycle-tracker-based.vercel.app",
     "iconUrl": "https://cycle-tracker-based.vercel.app/logo.png",
 
-    "splashImageUrl": "https://cycle-tracker-based.vercel.app/icon.png",
+    "splashImageUrl": "https://cycle-tracker-based.vercel.app/logo.png",
     "splashBackgroundColor": "#ffffff",
     "primaryCategory": "health-fitness",
     "tags": ["cycle", "period", "fertility"],

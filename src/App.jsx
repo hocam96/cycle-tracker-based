@@ -246,7 +246,7 @@ export default function App() {
       </div>
     </div>
 
-    <span className="pill">Mini app · Base</span>
+    <span className="pill">Mini app</span>
   </div>
 
   <p className="subtitle">

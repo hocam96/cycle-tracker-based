@@ -2,16 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cycle Tracker</title>
 
-    <!-- Favicon / App icon -->
-    <link rel="icon" type="image/png" href="/logo.png" />
-
-    <!-- Base mini app embed meta -->
+    <!-- Base Mini App metadata -->
     <meta
       name="fc:miniapp"
       content='{
@@ -27,22 +22,20 @@
         }
       }'
     />
-  </head>
 
-  <body>
-    <div id="root"></div>
-
-    <!-- Base Mini App preview "Ready" fix -->
+    <!-- Base mini app preview için READY fix -->
     <script>
       window.addEventListener("message", (event) => {
-        if (event.data && event.data.type === "IS_MINI_APP") {
+        if (event.data?.type === "IS_MINI_APP") {
           window.isMiniApp = true;
           window.parent.postMessage({ type: "MINI_APP_READY" }, "*");
         }
       });
     </script>
+  </head>
 
-    <!-- React entry -->
+  <body>
+    <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

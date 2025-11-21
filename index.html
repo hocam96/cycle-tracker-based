@@ -2,39 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- İstersen favicon olarak kendi logonu kullan -->
     <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cycle Tracker</title>
 
-    <!-- Farcaster mini app meta -->
+    <!-- Farcaster / Base miniapp embed metadata -->
     <meta
       name="fc:miniapp"
       content='{
-        "version": "next",
-        "imageUrl": "https://cycle-tracker-based.vercel.app/logo.png",
-        "button": {
-          "title": "Open Cycle Tracker",
-          "action": {
-            "type": "launch_miniapp",
-            "name": "Cycle Tracker",
-            "url": "https://cycle-tracker-based.vercel.app"
+        "version":"next",
+        "imageUrl":"https://cycle-tracker-based.vercel.app/logo.png",
+        "button":{
+          "title":"Open Cycle Tracker",
+          "action":{
+            "type":"launch_miniapp",
+            "name":"Cycle Tracker",
+            "url":"https://cycle-tracker-based.vercel.app"
           }
         }
       }'
     />
-
-    <!-- Base Mini App preview fix -->
-    <script>
-      window.addEventListener("message", (event) => {
-        if (event.data?.type === "IS_MINI_APP") {
-          window.isMiniApp = true;
-          window.parent.postMessage({ type: "MINI_APP_READY" }, "*");
-        }
-      });
-    </script>
   </head>
-
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

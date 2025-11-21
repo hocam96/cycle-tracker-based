@@ -1,5 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
+import { sdk } from "@farcaster/miniapp-sdk";
 
+/* ----------------- Helper functions ----------------- */
 
 function addDays(date, days) {
   const d = new Date(date);
@@ -157,18 +159,23 @@ function buildCalendar(results, baseDate) {
   };
 }
 
+/* ----------------- React component ----------------- */
+
 export default function App() {
   const [lastPeriod, setLastPeriod] = useState("");
   const [cycleLength, setCycleLength] = useState(28);
   const [periodLength, setPeriodLength] = useState(5);
   const [pregnancyMode, setPregnancyMode] = useState(false);
   const [calendarMonthOffset, setCalendarMonthOffset] = useState(0); // 0 = current month
-  // 🔔 FARCASTER MINI APP READY CALL
+
+  // FARCASTER MINI APP READY CALL
   useEffect(() => {
     async function markReady() {
       try {
-        await sdk.actions.ready();
-        console.log("Mini app is ready ✅");
+        if (sdk?.actions?.ready) {
+          await sdk.actions.ready();
+          console.log("Mini app is ready ✅");
+        }
       } catch (err) {
         console.error("Failed to call sdk.actions.ready()", err);
       }
@@ -176,6 +183,7 @@ export default function App() {
 
     markReady();
   }, []);
+
   // Load from localStorage on first load
   useEffect(() => {
     const saved = localStorage.getItem("cycle-tracker");
@@ -184,8 +192,9 @@ export default function App() {
       if (data.lastPeriod) setLastPeriod(data.lastPeriod);
       if (data.cycleLength) setCycleLength(data.cycleLength);
       if (data.periodLength) setPeriodLength(data.periodLength);
-      if (typeof data.pregnancyMode === "boolean")
+      if (typeof data.pregnancyMode === "boolean") {
         setPregnancyMode(data.pregnancyMode);
+      }
     }
   }, []);
 
@@ -235,26 +244,29 @@ export default function App() {
     <div className="app-root">
       <div className="app-card">
         <header className="app-header">
-  <div className="app-header-main">
-    <div className="app-brand">
-      <div className="app-logo-wrap">
-        
-      </div>
-      <div>
-        <h1>Cycle &amp; Pregnancy Tracker</h1>
-        <p className="tagline">Track your cycle on Base</p>
-      </div>
-    </div>
+          <div className="app-header-main">
+            <div className="app-brand">
+              <div className="app-logo-wrap">
+                <img
+                  src="/logo.png"
+                  alt="Cycle Tracker logo"
+                  className="app-logo"
+                />
+              </div>
+              <div>
+                <h1>Cycle &amp; Pregnancy Tracker</h1>
+                <p className="tagline">Track your cycle on Base</p>
+              </div>
+            </div>
 
-    <span className="pill">Mini app</span>
-  </div>
+            <span className="pill">Mini app</span>
+          </div>
 
-  <p className="subtitle">
-    A simple, pastel dashboard for cycle phases, calendar, ovulation and
-    pregnancy estimates. Not medical advice.
-  </p>
-</header>
-
+          <p className="subtitle">
+            A simple, pastel dashboard for cycle phases, calendar, ovulation and
+            pregnancy estimates. Not medical advice.
+          </p>
+        </header>
 
         {/* BASICS */}
         <section className="section">

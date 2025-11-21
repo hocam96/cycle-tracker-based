@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "id": "cycle-tracker-based",
+  "name": "Cycle Tracker",
+  "description": "Simple cycle, ovulation & fertility tracker for Base.",
+  "url": "https://cycle-tracker-based.vercel.app",
+  "icon": "https://cycle-tracker-based.vercel.app/icon.png",
+  "accountAssociation": {},
+  "miniapp": {},
+  "baseBuilder": {
+    "ownerAddress": "0x447608Db7712Fe0B5B88151Ec9EC54D358831BB6"
+  }
+}

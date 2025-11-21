@@ -4,7 +4,7 @@
   "name": "Cycle Tracker",
   "description": "Simple cycle, ovulation & fertility tracker for Base.",
   "url": "https://cycle-tracker-based.vercel.app",
-  "icon": "https://cycle-tracker-based.vercel.app/icon.png",
+  "icon": "https://cycle-tracker-based.vercel.app/logo.png",
   "accountAssociation": {
     "header": "",
     "payload": "",

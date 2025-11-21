@@ -9,17 +9,30 @@
       "0x447608Db7712Fe0B5B88151Ec9EC54D358831BB6"
     ]
   },
-  "miniapp": {
-  "version": "1",
-  "name": "Cycle Tracker",
-  "homeUrl": "https://cycle-tracker-based.vercel.app",
-  "iconUrl": "https://cycle-tracker-based.vercel.app/icon.png",
-  "splashImageUrl": "https://cycle-tracker-based.vercel.app/icon.png",
-  "splashBackgroundColor": "#ffffff",
-  "primaryCategory": "health-fitness",
-  "tags": ["cycle", "fertility"],
-  "description": "Track your cycle on Base.",
-  "tagline": "Simple cycle tracker"
-}
+"miniapp": {
+    "version": "1",
+    "name": "Cycle Tracker",
+    "homeUrl": "https://cycle-tracker-based.vercel.app",
+    "iconUrl": "https://cycle-tracker-based.vercel.app/icon.png",
 
+    "splashImageUrl": "https://cycle-tracker-based.vercel.app/icon.png",
+    "splashBackgroundColor": "#ffffff",
+    "primaryCategory": "health-fitness",
+    "tags": ["cycle", "period", "fertility"],
+
+    "description": "Track your cycle on Base.",
+    "tagline": "Simple cycle tracker",
+
+    "subtitle": "Period & fertility tracker",
+    "screenshotUrls": [
+      "https://cycle-tracker-based.vercel.app/screenshot1.png"
+    ],
+    "heroImageUrl": "https://cycle-tracker-based.vercel.app/screenshot1.png",
+
+    "ogTitle": "Cycle Tracker on Base",
+    "ogDescription": "Simple cycle, ovulation & fertility tracker for Base users.",
+    "ogImageUrl": "https://cycle-tracker-based.vercel.app/screenshot1.png",
+
+    "noindex": false
+  }
 }

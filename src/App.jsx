@@ -1,5 +1,6 @@
 // src/App.jsx
 import { useState, useEffect, useMemo } from "react";
+import { sdk } from "@farcaster/miniapp-sdk";
 
 // ----------------- helper fonksiyonlar -----------------
 function addDays(date, days) {
@@ -159,6 +160,27 @@ export default function App() {
   const [periodLength, setPeriodLength] = useState(5);
   const [pregnancyMode, setPregnancyMode] = useState(false);
   const [calendarMonthOffset, setCalendarMonthOffset] = useState(0);
+  // Mini app host'a "hazırım" sinyali ver
+  useEffect(() => {
+    let cancelled = false;
+
+    async function markReady() {
+      try {
+        await sdk.actions.ready();
+        if (!cancelled) {
+          console.log("Mini app ready ✅");
+        }
+      } catch (err) {
+        console.error("sdk.actions.ready() failed", err);
+      }
+    }
+
+    markReady();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // localStorage’dan yükle
   useEffect(() => {

@@ -2,40 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cycle Tracker</title>
 
-    <!-- Vercel icon (değiştirebilirsin) -->
-    <link rel="icon" href="/logo.png" />
-
-    <!-- MiniApp metadata -->
+    <!-- Farcaster / Base mini app metadata -->
     <meta
       name="fc:miniapp"
       content='{
-        "version": "next",
-        "imageUrl": "https://cycle-tracker-based.vercel.app/logo.png",
-        "button": {
-          "title": "Open Cycle Tracker",
-          "action": {
-            "type": "launch_miniapp",
-            "name": "Cycle Tracker",
-            "url": "https://cycle-tracker-based.vercel.app"
+        "version":"1",
+        "imageUrl":"https://cycle-tracker-based.vercel.app/logo.png",
+        "button":{
+          "title":"Open Cycle Tracker",
+          "action":{
+            "type":"launch_miniapp",
+            "name":"Cycle Tracker",
+            "url":"https://cycle-tracker-based.vercel.app"
           }
         }
       }'
     />
-
-    <!-- MiniApp READY FIX (do NOT duplicate <head>) -->
-    <script>
-      window.addEventListener("message", (event) => {
-        if (event.data?.type === "IS_MINI_APP") {
-          window.parent.postMessage({ type: "MINI_APP_READY" }, "*");
-        }
-      });
-    </script>
-
   </head>
-
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
